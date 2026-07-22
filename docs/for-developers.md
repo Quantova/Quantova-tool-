@@ -53,3 +53,46 @@ client. The wallet API is the shape shown in the examples. See
 
 ## Work with QVM containers
 
+The QVM is a register machine that runs compiled containers. It is not the Ethereum
+virtual machine and it is not a wasm virtual machine. Contracts are written in
+Quanta, a language where whole exploit classes fail to compile, and compiled to a
+container that the QVM executes. You read container state with `get_container` and
+`get_storage`, and you invoke a container by submitting a signed transaction.
+
+```python
+token = q.contract(TOKEN_ADDRESS)          # a QAsset contract, a compiled container
+balance = token.balance_of(HOLDER)          # a single word map value
+signed = token.build_transfer(sender, to=HOLDER, amount=25)
+q.submit_transaction(signed)
+```
+
+QAsset is the fungible token standard and QCollectible is the non fungible
+standard. Full runnable code is in
+[../examples/python/contract_call.py](../examples/python/contract_call.py).
+
+## Resolve and use names, QNS
+
+```python
+qns = q.qns(QNS_REGISTRY)
+addr = qns.resolve("alice.Q")     # returns a Q1 address
+```
+
+Names live under the capital Q top level domain, for example `alice.Q`. Full
+runnable code is in
+[../examples/python/qns_resolve.py](../examples/python/qns_resolve.py). Register
+names with QNS.
+
+## Verify your implementation
+
+Before you ship, check your code against the protocol with the verification tools.
+
+- **pq-test-vectors**, confirm your address derivation, hashing, and ML-DSA-65
+  signature handling match the known answer vectors.
+- **node-conformance-tests**, confirm the node you build against is a canonical
+  Quantova node with healthy QORUS finality.
+
+## Reference
+
+- Gateway endpoints, genesis, and network parameters, the **chain-params** tool.
+- Snippets for quick copy paste, [../snippets](../snippets).
+- Patterns and full programs, the **examples** tool and [../examples](../examples).
