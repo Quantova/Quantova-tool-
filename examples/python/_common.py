@@ -51,3 +51,33 @@ def use_demo_backend():
     return True
 
 
+def connect():
+    """Return a QCore client pointed at GATEWAY."""
+    return QCore(GATEWAY)
+
+
+def to_qtov(quon_value):
+    """Format an integer Quon value as a human TQTOV or QTOV string."""
+    if isinstance(quon_value, str):
+        quon_value = int(quon_value, 16) if quon_value.startswith("0x") else int(quon_value)
+    whole = quon_value / QUON
+    return f"{whole:,.6f}".rstrip("0").rstrip(".")
+
+
+def to_quon(qtov_value):
+    """Convert a QTOV amount, int, float, or str, to integer Quon."""
+    return int(round(float(qtov_value) * QUON))
+
+
+def num(hex_or_int):
+    """Coerce a hex string or int to int."""
+    if isinstance(hex_or_int, str):
+        return int(hex_or_int, 16) if hex_or_int.startswith("0x") else int(hex_or_int)
+    return int(hex_or_int)
+
+
+def banner(title):
+    line = "=" * 64
+    print(line)
+    print(f"  {title}")
+    print(line)
