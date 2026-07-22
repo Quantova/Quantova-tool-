@@ -98,3 +98,50 @@ A short index. The full catalog with descriptions is in
 Quantova speaks a plain HTTP gateway. Every call is an HTTP POST to `/v1/<method>`
 with a flat JSON body. There is no WebSocket transport.
 
+| Environment | Gateway base URL |
+|---|---|
+| Testnet | `https://testnet.quantova.io` |
+| Local dev | `http://127.0.0.1:8645` |
+
+Mainnet is not yet live. The gateway methods are `node_info`, `head`, `validators`,
+`chain_params`, `get_account`, `get_transaction`, `submit_transaction`,
+`get_block`, `supply`, `get_container`, `get_storage`, and `get_events`.
+
+Get free TQTOV for the testnet from the faucet, install the QMask wallet, and
+register names with QNS.
+
+## Running the examples
+
+```bash
+# Python
+cd examples/python
+pip install qcore
+export QUANTOVA_GATEWAY=https://testnet.quantova.io
+python connect.py
+
+# JavaScript
+cd examples/javascript
+npm install @qunatovainc/qcore
+export QUANTOVA_GATEWAY=https://testnet.quantova.io
+node connect.js
+```
+
+See [examples/python/README.md](examples/python/README.md) and
+[examples/javascript/README.md](examples/javascript/README.md).
+
+## Repository layout
+
+```
+Quantova-tools/
+  docs/        getting-started, tools-catalog, for-developers, for-companies, post-quantum-overview
+  examples/    runnable sample programs in QCore.js and QCore.py
+  snippets/    short copy paste code for common tasks
+  LICENSE
+  LICENSE-OVERVIEW.md
+  README.md
+```
+
+## License
+
+Licensed under the Business Source License 1.1, BUSL-1.1, copyright 2026 Quantova
+Inc. See [LICENSE](LICENSE) and [LICENSE-OVERVIEW.md](LICENSE-OVERVIEW.md).
