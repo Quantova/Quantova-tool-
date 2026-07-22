@@ -53,3 +53,16 @@ Both tools are read only and hold no keys, so they are safe to run in your
 infrastructure and safe to wire into automated checks. They confirm correctness and
 conformance. They are not a substitute for the external audits still ahead.
 
+## What to standardize internally
+
+- **Endpoints and chain identity** from the **chain-params** tool, the gateway base
+  URL, genesis, and network parameters, pinned in your configuration.
+- **A verification step in CI**, pq-test-vectors for your code and
+  node-conformance-tests for the node.
+- **Key management policy**, how ML-DSA-65 signing keys are stored and rotated, and
+  where signing happens.
+
+## Licensing
+
+The Quantova tools are published under the Business Source License 1.1. Review each
+tool's `LICENSE` and `LICENSE-OVERVIEW.md` for the terms that apply to your use.
