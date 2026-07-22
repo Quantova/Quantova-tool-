@@ -45,3 +45,15 @@ def main():
     print(f"\nTransfer: {AMOUNT_QTOV} TQTOV -> {RECIPIENT}  (amount {amount} Quon)")
     print(f"ML-DSA-65 signature: {signed.signature_hex[:34]}...")
 
+    # submit through the gateway
+    try:
+        result = q.submit_transaction(signed)
+        print(f"Submitted. tx hash: {result['hash']}")
+        tx = q.get_transaction(result["hash"])
+        print(f"Included in block: {tx.get('block')}   status: {tx.get('status')}")
+    except Exception as e:
+        print(f"(submit step: {e})")
+
+
+if __name__ == "__main__":
+    main()
