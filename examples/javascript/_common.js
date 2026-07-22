@@ -52,3 +52,24 @@ function gw(method, body = {}, base = GATEWAY) {
   });
 }
 
+const big = (v) => (typeof v === 'string' ? BigInt(v) : BigInt(v));
+
+/** Format an integer Quon amount as a human QTOV string. */
+function toQtov(quon) {
+  const p = big(quon);
+  const whole = p / QUON;
+  const frac = (p % QUON).toString().padStart(6, '0').replace(/0+$/, '');
+  return frac ? `${whole}.${frac}` : `${whole}`;
+}
+
+/** Convert a QTOV amount to integer Quon. */
+const toQuon = (qtov) => BigInt(Math.round(Number(qtov) * 1e6));
+
+function banner(title) {
+  const line = '='.repeat(64);
+  console.log(line);
+  console.log('  ' + title);
+  console.log(line);
+}
+
+module.exports = { gw, big, toQtov, toQuon, banner, GATEWAY, QUON };
