@@ -51,3 +51,10 @@ print(token.balance_of(HOLDER))      # a single word map value
 
 ## Resolve a name
 
+```python
+addr = q.qns(QNS_REGISTRY).resolve("alice.Q")   # a name under the capital Q domain
+```
+
+Every transaction built and signed with these snippets is signed with ML-DSA-65
+(FIPS 204) and verified on chain. There is no classical key path anywhere in the
+chain.
