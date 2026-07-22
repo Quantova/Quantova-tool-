@@ -53,3 +53,8 @@ inherits it.
 
 ## In short
 
+Quantova is post quantum end to end, with no cryptography vulnerable to Shor's
+algorithm. That is the true, strong claim. The stack is at the testnet and pre
+audit stage, and external audits are still ahead, so it is not correct to call it
+audited, unbreakable, or free of bugs. What is correct is that there is no
+classical cryptography in the chain for a quantum computer to break.
