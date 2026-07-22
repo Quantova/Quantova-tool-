@@ -53,3 +53,28 @@ and [../examples/javascript/connect.js](../examples/javascript/connect.js).
 
 ## 4. Get a wallet and test funds
 
+1. Install QMask and create an account. Its Q1 address begins with a capital Q.
+2. Claim free TQTOV for your address from the testnet faucet.
+
+## 5. Submit your first transaction
+
+A transfer is built, signed with ML-DSA-65, and submitted through the gateway
+`submit_transaction` method. The runnable examples show the full flow end to end.
+
+- [../examples/python/transfer.py](../examples/python/transfer.py)
+- [../examples/javascript/transfer.js](../examples/javascript/transfer.js)
+
+Every Quantova transaction is signed with ML-DSA-65 (FIPS 204). There is no
+classical key path anywhere in the chain. Amounts are in Quon. One QTOV is one
+million Quon, and the testnet asset is TQTOV.
+
+## 6. Go further
+
+- Contracts on the QVM, deploy and call Quanta contracts, see
+  [../examples/python/contract_call.py](../examples/python/contract_call.py).
+- Names with QNS, resolve names under the capital Q top level domain, see
+  [../examples/python/qns_resolve.py](../examples/python/qns_resolve.py).
+- Verify your work with the pq-test-vectors and node-conformance-tests tools.
+
+See the full [tools catalog](tools-catalog.md), [for developers](for-developers.md),
+and [for companies](for-companies.md).
